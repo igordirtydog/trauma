@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>numb ili noć u e molu</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header, section {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    header {
+      background-color: #1f1f1f;
+      text-align: center;
+      padding-top: 4rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #ffffff;
+    }
+    h2 {
+      color: #ffcc00;
+      border-bottom: 1px solid #444;
+      padding-bottom: 0.5rem;
+    }
+    a {
+      color: #ffcc00;
+      text-decoration: none;
+    }
+    .gallery img {
+      width: 100%;
+      max-width: 300px;
+      margin: 1rem;
+      border: 2px solid #333;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    pre.koncentrat {
+      white-space: pre-wrap;
+      background-color: #1a1a1a;
+      padding: 1rem;
+      border-left: 4px solid #ffcc00;
+      font-family: 'Courier New', monospace;
+    }
+    .stats {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: #ccc;
+    }
+    .like-button {
+      background-color: #ffcc00;
+      color: #000;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    .like-button:hover {
+      background-color: #e6b800;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>numb ili noć u e molu</h1>
+    <p><em>"Kad bi noć imala zvuk, bio bi to E-mol."</em></p>
+    <div class="stats">
+      Pregleda: <span id="viewCount">0</span> | Lajkova: <span id="likeCount">0</span><br />
+      <button class="like-button" onclick="addLike()">👍 Sviđa mi se</button>
+    </div>
+  </header>
+
+  <section>
+    <h2>O knjizi</h2>
+    <p>Introspektivno, sirovo i poetsko djelo o borbi s ovisnostima, osjećajem izolacije i traženjem sebe.</p>
+  </section>
+
+  <section>
+    <h2>O autoru</h2>
+    <p>Igor Šajnović, autor romana, koristi vlastita iskustva da stvori brutalno iskrenu ispovijest bez uljepšavanja.</p>
+  </section>
+
+  <section>
+    <h2>Isječci iz knjige</h2>
+    <ul>
+      <li><a href="downloads/isjecak1.pdf" download>Isječak 1 (PDF)</a></li>
+      <li><a href="downloads/isjecak2.pdf" download>Isječak 2 (PDF)</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>NUMB — koncentrat (narracija)</h2>
+    <pre class="koncentrat">
+Kad bi noć imala zvuk, bio bi to E-mol. Ne glazba — nego zvuk tame. Onaj koji čujem u trenucima kad sam polomljen, istrošen, nevidljiv samome sebi...
+[OVDJE NASTAVI CIJELI TEKST IZ KNJIGE]
+    </pre>
+  </section>
+
+  <section>
+    <h2>Recenzije i komentari</h2>
+    <div id="disqus_thread"></div>
+    <script>
+      var disqus_config = function () {
+        this.page.url = window.location.href;
+        this.page.identifier = "numb-knjiga";
+      };
+      (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://YOUR_DISQUS_SHORTNAME.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Omogući JavaScript za prikaz komentara.</noscript>
+  </section>
+
+  <section>
+    <h2>Galerija</h2>
+    <div class="gallery">
+      <img src="img/naslovnica.jpg" alt="Naslovnica knjige" />
+      <img src="img/promocija1.jpg" alt="Promocija knjige" />
+    </div>
+  </section>
+
+  <section>
+    <h2>Kontakt</h2>
+    <p>Mail: <a href="mailto:igorsajnovic2@gmail.com">igorsajnovic2@gmail.com</a></p>
+  </section>
+
+  <footer>
+    &copy; 2025 Igor Šajnović. Sva prava pridržana.
+  </footer>
+
+  <script>
+    // LocalStorage brojač pregleda i lajkova
+    document.addEventListener('DOMContentLoaded', function () {
+      let views = localStorage.getItem('numb_views') || 0;
+      views++;
+      localStorage.setItem('numb_views', views);
+      document.getElementById('viewCount').innerText = views;
+
+      let likes = localStorage.getItem('numb_likes') || 0;
+      document.getElementById('likeCount').innerText = likes;
+    });
+
+    function addLike() {
+      let likes = parseInt(localStorage.getItem('numb_likes') || '0');
+      likes++;
+      localStorage.setItem('numb_likes', likes);
+      document.getElementById('likeCount').innerText = likes;
+    }
+  </script>
+</body>
+</html>
